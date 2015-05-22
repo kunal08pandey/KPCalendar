@@ -1,0 +1,30 @@
+{
+  "name": "KPCalendar",
+  "version": "0.1.0",
+  "summary": "A short description of KPCalendar.",
+  "description": "                       This is a description of KPCalendar\n\n                       * Markdown format.\n                       * Don't worry about the indent, we strip it!\n",
+  "homepage": "https://github.com/kunal08pandey/KPCalendar",
+  "license": "MIT",
+  "authors": {
+    "kunalpandey2014": "kunal.pandey@fareportal.com"
+  },
+  "source": {
+    "git": "https://github.com/kunal08pandey/KPCalendar.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "KPCalendar": [
+      "Pod/Assets/*.png"
+    ]
+  },
+  "dependencies": {
+    "NSDate-Extensions": [
+
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+PODS:
+  - KPCalendar (0.1.0):
+    - NSDate-Extensions
+  - NSDate-Extensions (0.0.1)
+
+DEPENDENCIES:
+  - KPCalendar (from `../`)
+
+EXTERNAL SOURCES:
+  KPCalendar:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  KPCalendar: 11ed1afab4dea26f00773a9723dc29bfbb3395ab
+  NSDate-Extensions: cbd68ecf5cf8a150644e184b4521d7734fea5ace
+
+COCOAPODS: 0.37.0

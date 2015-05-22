@@ -1,0 +1,1 @@
+../../../../../Pod/Classes/KPCollectionViewCell.h

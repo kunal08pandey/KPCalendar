@@ -7,12 +7,17 @@
 //
 
 #import "KPAppDelegate.h"
+#import <KPCalendar/KPCalendarController.h>
 
 @implementation KPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+  KPCalendarController *controller = [[KPCalendarController alloc] initWithNibName:@"KPViewController" bundle:nil];
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  [self.window setRootViewController:controller];
+  [self.window setBackgroundColor:[UIColor whiteColor]];
+  [self.window makeKeyAndVisible];
     return YES;
 }
 							

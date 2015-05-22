@@ -12,16 +12,16 @@ Pod::Spec.new do |s|
   s.version          = "0.1.0"
   s.summary          = "A short description of KPCalendar."
   s.description      = <<-DESC
-                       An optional longer description of KPCalendar
+                       This is a description of KPCalendar
 
                        * Markdown format.
                        * Don't worry about the indent, we strip it!
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/KPCalendar"
+  s.homepage         = "https://github.com/kunal08pandey/KPCalendar"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "kunalpandey2014" => "kunal.pandey@fareportal.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/KPCalendar.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/kunal08pandey/KPCalendar.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
@@ -35,4 +35,5 @@ Pod::Spec.new do |s|
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+s.dependency 'NSDate-Extensions'
 end
