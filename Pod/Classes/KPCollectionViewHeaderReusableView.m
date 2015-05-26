@@ -10,8 +10,15 @@
 
 @implementation KPCollectionViewHeaderReusableView
 
+-(id)init{
+  if(self =[super init]) {
+    self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil][0];
+  }
+  return self;
+}
+
 - (void)awakeFromNib {
-    // Initialization code
+  [super awakeFromNib];
 }
 
 @end

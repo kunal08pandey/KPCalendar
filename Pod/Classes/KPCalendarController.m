@@ -27,9 +27,9 @@
   UINib *nib  = [UINib nibWithNibName:@"KPCollectionViewCell" bundle:nil];
   [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"KPCollectionViewCell"];
   nib = [UINib nibWithNibName:@"KPCollectionViewHeaderReusableView" bundle:nil];
-  [self.collectionView registerNib:nib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
-  
-  
+  [self.collectionView registerClass:[KPCollectionViewHeaderReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+  UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+  [layout setHeaderReferenceSize:CGSizeMake(320, 58)];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -66,14 +66,18 @@
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-  static NSString *cellIdentifier = @"HeaderView";
-  
-  KPCollectionViewHeaderReusableView *reusableView = (KPCollectionViewHeaderReusableView*)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+  static NSString *headerIdentifier = @"HeaderView";
+  if([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+  KPCollectionViewHeaderReusableView *reusableView = (KPCollectionViewHeaderReusableView*)[collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentifier forIndexPath:indexPath];
   if(reusableView == nil) {
     reusableView = [[KPCollectionViewHeaderReusableView alloc] init];
   }
-  [reusableView setBackgroundColor:[UIColor whiteColor]];
-  return reusableView;
+    [_date month]
+    reusableView.monthText setText:<#(NSString *)#>
+//  [reusableView setBackgroundColor:[UIColor whiteColor]];
+     return reusableView;
+  }
+  return nil;
 }
 
 

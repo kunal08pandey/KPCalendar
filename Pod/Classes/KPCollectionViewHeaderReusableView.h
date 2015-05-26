@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface KPCollectionViewHeaderReusableView : UICollectionReusableView
-
+@property(nonatomic,weak) IBOutlet UIView *monthView;
+@property(nonatomic,weak) IBOutlet UIView *weekView;
+@property(nonatomic,strong) IBOutlet UILabel *monthText;
 @end
