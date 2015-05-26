@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  KPCalendar: 11ed1afab4dea26f00773a9723dc29bfbb3395ab
+  KPCalendar: 35c51a08e4f72a0995864b5095ac15966e3901e1
   NSDate-Extensions: cbd68ecf5cf8a150644e184b4521d7734fea5ace
 
 COCOAPODS: 0.37.0

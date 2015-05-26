@@ -58,9 +58,15 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "../../Pod/Classes/KPCalendarController.xib"
+  install_resource "../../Pod/Classes/KPCollectionViewCell.xib"
+  install_resource "../../Pod/Classes/KPCollectionViewHeaderReusableView.xib"
   install_resource "${BUILT_PRODUCTS_DIR}/KPCalendar.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "../../Pod/Classes/KPCalendarController.xib"
+  install_resource "../../Pod/Classes/KPCollectionViewCell.xib"
+  install_resource "../../Pod/Classes/KPCollectionViewHeaderReusableView.xib"
   install_resource "${BUILT_PRODUCTS_DIR}/KPCalendar.bundle"
 fi
 

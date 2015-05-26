@@ -58,10 +58,10 @@
   if(cell == nil) {
     cell = [[KPCollectionViewCell alloc] init];
   }
+  NSLog(@"%d",[_date weekday]);
  _date = [_firstDate dateByAddingDays:indexPath.item];
   NSString *dateString = [NSString stringWithFormat:@"%ld",(long)[_date dateComponents].day];
   [cell.dateLabel setText:dateString];
-  
     return cell;
 }
 
@@ -72,9 +72,11 @@
   if(reusableView == nil) {
     reusableView = [[KPCollectionViewHeaderReusableView alloc] init];
   }
-  
+  [reusableView setBackgroundColor:[UIColor whiteColor]];
   return reusableView;
 }
+
+
 
 #pragma mark - UICollectionViewDelegate Method
 
