@@ -13,7 +13,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  KPCalendarController *controller = [[KPCalendarController alloc] initWithNibName:@"KPViewController" bundle:nil];
+  KPCalendarController *controller = [KPCalendarController calendarWithCurrentDate];
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   [self.window setRootViewController:controller];
   [self.window setBackgroundColor:[UIColor whiteColor]];

@@ -60,4 +60,5 @@
 - (NSString *) crdeitCardExpiryDateFormat;
 - (NSString *)passportDateFormat;
 - (NSInteger)daysSinceDate:(NSDate*)toDateTime;
+-(NSString *)monthName;
 @end

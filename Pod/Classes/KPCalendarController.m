@@ -8,14 +8,27 @@
 
 #import "KPCalendarController.h"
 #import "KPCollectionViewCell.h"
+#import "KPCalendarLayout.h"
 #import "KPCollectionViewHeaderReusableView.h"
 #import <NSDate-Extensions/NSDate-Utilities.h>
 #import <KPCalendar/NSDate+Extensions.h>
-@interface KPCalendarController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+
+#define pi 3.1425
+#define DEGREE_TO_RADIAN(degree) pi*degree/180;
+
+@interface KPCalendarController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,KPCalendarLayoutDelegate>
 @property (nonatomic,strong) NSDate *date,*currentDate,*firstDate;
 @end
-
+KPCalendarController *controller;
 @implementation KPCalendarController
+
++(instancetype)calendarWithCurrentDate {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    controller = [[KPCalendarController alloc] initWithNibName:NSStringFromClass([self class]) bundle:nil];
+  });
+  return controller;
+}
 
 - (void)viewDidLoad
 {
@@ -27,9 +40,12 @@
   UINib *nib  = [UINib nibWithNibName:@"KPCollectionViewCell" bundle:nil];
   [self.collectionView registerNib:nib forCellWithReuseIdentifier:@"KPCollectionViewCell"];
   nib = [UINib nibWithNibName:@"KPCollectionViewHeaderReusableView" bundle:nil];
-  [self.collectionView registerClass:[KPCollectionViewHeaderReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
-  UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+  [self.collectionView registerNib:nib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+  KPCalendarLayout *layout = (KPCalendarLayout*)self.collectionView.collectionViewLayout;
   [layout setHeaderReferenceSize:CGSizeMake(320, 58)];
+  [layout setDelegate:self];
+  
+  
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -58,8 +74,13 @@
   if(cell == nil) {
     cell = [[KPCollectionViewCell alloc] init];
   }
-  NSLog(@"%d",[_date weekday]);
+ 
  _date = [_firstDate dateByAddingDays:indexPath.item];
+//  UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+//  attributes.frame = CGRectMake(10, 10 ,200, 200);
+//  CGFloat radian= DEGREE_TO_RADIAN(indexPath.row);
+//  attributes.transform = CGAffineTransformMakeRotation(radian);
+//  cell.
   NSString *dateString = [NSString stringWithFormat:@"%ld",(long)[_date dateComponents].day];
   [cell.dateLabel setText:dateString];
     return cell;
@@ -72,8 +93,8 @@
   if(reusableView == nil) {
     reusableView = [[KPCollectionViewHeaderReusableView alloc] init];
   }
-    [_date month]
-    reusableView.monthText setText:<#(NSString *)#>
+    
+    [reusableView.monthText setText:[[_firstDate dateByAddingMonths:indexPath.section] monthName]];
 //  [reusableView setBackgroundColor:[UIColor whiteColor]];
      return reusableView;
   }
@@ -81,6 +102,27 @@
 }
 
 
+#pragma mark - KPCalendarLayoutDelegate
+
+-(NSInteger)startingColumnNumberAtSection:(NSInteger)section {
+  return  [_date weekday];
+}
+
+-(NSInteger)numberOfColumnsAtSection:(NSInteger)section {
+  return 7;
+}
+
+-(NSInteger)numberOfRowsAtSection:(NSInteger)section {
+  return ceill([_firstDate numDaysInMonth]/7);
+}
+
+-(CGSize)sizeOfItemAtindexPath:(NSIndexPath *)indexPath {
+  return CGSizeMake(50, 50);
+}
+
+-(UIEdgeInsets)insetForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return UIEdgeInsetsZero;
+}
 
 #pragma mark - UICollectionViewDelegate Method
 

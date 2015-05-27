@@ -10,5 +10,7 @@
 
 @interface KPCalendarController : UIViewController
 
++(instancetype)calendarWithCurrentDate;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @end

@@ -12,13 +12,14 @@
 
 -(id)init{
   if(self =[super init]) {
-    self = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil][0];
+    [self awakeFromNib];
   }
   return self;
 }
 
 - (void)awakeFromNib {
   [super awakeFromNib];
+ 
 }
 
 @end

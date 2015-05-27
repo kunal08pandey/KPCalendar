@@ -3,6 +3,7 @@
 
 #import "NSDate+Extensions.h"
 #import "NSString+Extensions.h"
+#import "NSDate-Utilities.h"
 static NSCalendar *calendar;
 static NSMutableDictionary *formatters;
 @implementation NSDate (Extensions)
@@ -456,5 +457,8 @@ static NSMutableDictionary *formatters;
   return [difference day];
 }
 
+-(NSString *)monthName {
+ return [self format:@"LLLL"];
+}
 
 @end
